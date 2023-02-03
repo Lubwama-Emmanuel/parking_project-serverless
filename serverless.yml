@@ -1,0 +1,21 @@
+service: parkingVille-serverless
+frameworkVersion: '3'
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-2
+  stage: dev
+
+functions:
+  registerCar:
+    handler: app.handler
+    events:
+      - http: 'POST /cars'
+  getCars:
+    handler: app.handler
+    events:
+      - http: 'GET /cars'
